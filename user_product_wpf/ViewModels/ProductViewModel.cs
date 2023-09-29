@@ -10,6 +10,7 @@ using PropertyChanged;
 using System;
 using System.Linq;
 using user_product_wpf.Views;
+using System.Windows;
 
 namespace user_product_wpf.ViewModels
 {
@@ -62,23 +63,25 @@ namespace user_product_wpf.ViewModels
         public ProductViewModel()
         {
             ProductInfo = new Product();
-            Products = new ObservableCollection<Product>();
-            Products.Add(new Product
+            Products = new ObservableCollection<Product>()
             {
-                Id = 1,
-                Description = "Test",
-                Name = "Test",
-                Price = 1,
-                Unit = "Pack",
-            });
-            Products.Add(new Product
-            {
-                Id = 2,
-                Description = "Test",
-                Name = "Test",
-                Price = 1,
-                Unit = "Pack",
-            });
+                new Product
+                {
+                    Id = 1,
+                    Description = "Test 1",
+                    Name = "Test 1",
+                    Price = 1232,
+                    Unit = "Pack",
+                },
+                new Product
+                {
+                    Id = 2,
+                    Description = "Test 2",
+                    Name = "Test 2",
+                    Price = 1349287,
+                    Unit = "Pack",
+                }
+            };
         }
 
         public ICommand AddProduct
@@ -121,12 +124,15 @@ namespace user_product_wpf.ViewModels
         {
             get
             {
-                return new RelayCommand(() =>
+                return new RelayCommand<object>((obj) =>
                 {
-                    var selected = Products.Where(item => item.Id == SelectedProduct.Id).First();
-                    var updateProductViewModel = new UpdateProduct(Products, selected);
-                    var popup = new PopupUpdateProduct(updateProductViewModel);
-                    popup.Show();
+                    if (obj is Product i)
+                    {
+                        //var selected = Products.Where(item => item.Id == SelectedProduct.Id).First();
+                        var updateProductViewModel = new UpdateProduct(Products, i);
+                        var popup = new PopupUpdateProduct(updateProductViewModel);
+                        popup.Show();
+                    }
                 });
             }
         }

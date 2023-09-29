@@ -14,6 +14,7 @@ public partial class PopupUpdateProduct : Window
     {
         InitializeComponent();
         this.updateProduct = updateProduct;
+        updateProduct.UpdateWindow = this;
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)

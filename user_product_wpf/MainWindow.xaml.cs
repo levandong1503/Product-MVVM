@@ -29,7 +29,7 @@ namespace user_product_wpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ProductViewModel  ProductViewModel = new ProductViewModel();    
+            ProductViewModel  ProductViewModel = new ProductViewModel();
             this.DataContext = ProductViewModel;
         }
 

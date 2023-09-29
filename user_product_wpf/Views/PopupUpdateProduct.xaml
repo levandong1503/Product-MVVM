@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ei="http: //schemas.microsoft.com/expression/2010/interactions"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:user_product_wpf.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="PopupUpdateProduct"
@@ -43,13 +45,13 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 FontWeight="Bold">
-                First Column
+                Title
             </TextBlock>
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="1"
                 FontWeight="Bold">
-                Second Column
+                Content
             </TextBlock>
 
             <TextBlock
@@ -61,7 +63,7 @@
                 x:Name="txtName"
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding ProductInfo.Name, Mode=TwoWay}" />
+                Text="{Binding ProductUpdateValue.Name, Mode=TwoWay}" />
 
             <TextBlock
                 Grid.Row="2"
@@ -71,7 +73,7 @@
                 x:Name="txtDescription"
                 Grid.Row="2"
                 Grid.Column="1"
-                Text="{Binding ProductInfo.Description, Mode=TwoWay}" />
+                Text="{Binding ProductUpdateValue.Description, Mode=TwoWay}" />
 
             <TextBlock
                 Grid.Row="3"
@@ -81,7 +83,7 @@
                 Name="txtPrice"
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="{Binding ProductInfo.Price, Mode=TwoWay}" />
+                Text="{Binding ProductUpdateValue.Price, Mode=TwoWay}" />
 
             <TextBlock
                 Grid.Row="4"
@@ -91,7 +93,7 @@
                 x:Name="txtUnit"
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding ProductInfo.Unit, Mode=TwoWay}" />
+                Text="{Binding ProductUpdateValue.Unit, Mode=TwoWay}" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -105,7 +107,10 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCommand}"
                 Content="Update" />
-            <Button Grid.Column="3" Content="Delete" />
+            <Button
+                Grid.Column="3"
+                Command="{Binding DeleteCommand}"
+                Content="Delete" />
         </Grid>
     </Grid>
 </Window>
